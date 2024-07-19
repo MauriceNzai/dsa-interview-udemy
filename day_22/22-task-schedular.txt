@@ -1,0 +1,46 @@
+Task Scheduler
+You are given an array of cpu task, each represented by letters A to Z, and a cooling time, n. Each cycle or interval allows the completion of one task.Tasks can be completed in any order, but there is a constraint: identical tasks must be separated by at least n intervals due to cooling time.
+Return the minimum number of intervals required to complete all tasks.
+Examples
+1. Input: tasks = ['C', 'E', 'C', 'E', 'C','E'], n = 2
+Output: 8
+C, E, iddle, C, E, iddle, C, E
+
+2. Input: tasks = ['C', 'E', 'C', 'E', 'C','E'], n = 3
+ Output: 8
+  C, E, iddle, iddle, C, E, iddle, iddle, C, E
+
+  
+  Approach
+  tasks = ['C', 'E', 'C', 'E', 'A','C'], n = 2
+
+  arrange tasks with higest frequency separted by n
+  notice that the minimum intervals = length of array + total iddle slots
+  to solve this question, we need to identify the number of empty slots.
+
+  1. identify number of 'parts' between highest frequency tasks
+    parts = highest frequency - 1
+  2. calculate number of slots in parts(slots available to put remaining tasks)
+    slots-in-parts = n * parts
+  3. calculate number of remaining tasks to be filled in slots
+    remaining-tasks = array-length - highest frequency tasks
+  4. calculate empty slots
+    empty-slots = slots-in-parts - remaining-tasks
+
+
+    Special Case
+  More than one task has the highest frequency occurancy
+
+  treat tasks with highest frequency as one unit
+  arrange these units separated by n - (number-tasks-unit - 1)
+
+  1. parts = highest frequency - 1
+  2. slots-in-parts = parts *  n - (number-tasks-unit - 1)
+  3. remaining-tasks = array-length - highest frequency tasks
+        highest frequency tasks = hihgest frequency * number-tasks-highestFreq
+  4. empty-slots = slots-in-parts - remaining-tasks
+
+  
+  Note
+  If empty-slots < 0
+  empty-slots = 0
