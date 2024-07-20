@@ -1,0 +1,27 @@
+Clarifying Questions
+Is an empty array monotonic? Yes
+Is an array with single element monotonic? Yes
+
+Test Cases
+[1,2,2,3] => true (monotony increasing)
+[3,2,2,1] => true (monotony decreasing)
+[3] => true
+[3,3] => true
+[] => true
+[1,4,7,3,5] => false
+
+
+Monotonic non increasing means moving from index 0 to n, the elemensts are not increasing
+i.e. array[i] >= array[i+1]
+
+Monotonic non decreasing means moving from index 0 to n, the elemensts are not decreasing
+i.e. array[i] <= array[i+1]
+
+Three Scenarios
+[3,_,_,_,_,9] => monotonic if all values in between are greater than 3 and less than 9
+[3,_,_,_,_,3] => monotonic if all values in between are equal to 3
+[3,_,_,_,_,-9] => monotonic if all values in between are less than 3 and greater than -9
+
+Pseudocode
+compare the first and last elements to identify which scenario as above
+loop through the array and determine the solution
