@@ -1,0 +1,35 @@
+## Question
+
+Given two string s and t, determine if they are isomorphic. Two strings s and t are isomorphic if the characters in s can be replaced to get t. All occurences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character, but a character may map to itself. s and t consists of any valid ascii character.
+
+e.g s = "abasus", t = "rirfgs" => True
+    s = "aba" t = "pqa" => False
+
+
+### Clarifying Questions
+
+
+### Test Cases
+s = "ababa" , t = "eoeoo" => False
+s = "ababa" , t = "pqrqo" => False
+s = "abasus" , t = "rirfgs" => True
+s = "green" , t = "abccd" => True
+s = "abaqa" , t = "pqr" => False
+
+
+### Approach
+Bruteforce
+
+take each charater in s
+loop loop through s and t
+    -> same character mapped each occurence in t
+    -> ensure same character is not used for another mapping
+
+
+Optimal Approach
+
+if length of s and t not equal, return false
+create two hash maps for s and t
+loop through s and t and check if mappings exist in hash maps
+if not, make respective entries in hash maps
+Note: key is the character in respective string (s/t) and value is mapped character in other string (t/s)
