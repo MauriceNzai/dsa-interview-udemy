@@ -8,7 +8,7 @@ for flying people to two cities and returns the minimum cost.
 Example:
     costs = [[10, 20], [30, 200], [50, 50], [200, 30]]
     result = twoCityScheduleCost(costs)
-    print(result)  # Output: 110
+    print(result)  # Output: 120
 """
 
 
@@ -29,7 +29,7 @@ def twoCityScheduleCost(costs):
     Example:
         >>> costs = [[10, 20], [30, 200], [50, 50], [200, 30]]
         >>> twoCityScheduleCost(costs)
-        110
+        120
 
     The function sorts the costs based on the difference in cost between
     flying to city A and city B.
@@ -37,7 +37,7 @@ def twoCityScheduleCost(costs):
     city A and the second half to city B.
     """
     # sort costs array based on difference in cost to city A and B
-    costs.sort(key=lambda x: x[0] - x[1])
+    costs.sort(key=lambda x: x[0] - x[1])    
 
     cost = 0
     n = len(costs)
