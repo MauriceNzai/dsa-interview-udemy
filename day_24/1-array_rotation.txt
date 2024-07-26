@@ -1,0 +1,44 @@
+# Question
+
+Given an array, rotate the array to the right by k steps, where k is non-negative.
+Eg
+	[1,2,3,4]	k=1 	=> 	[4,1,2,3]
+			k=2	=>	[3,4,1,2]
+
+## Clarifying Question
+
+What happens when an empty array? Return an empty array
+If k=0, no rotation is to happen, right? Thats correct.
+
+## Test Cases
+
+[1,2] 		k=1	=> 	[2,1]
+,,	   	k=2     =>      [1,2]
+[1,2,3,4]       k=1     =>      [4,1,2,3]
+ ,,             k=2     =>      [3,4,1,2]
+,,		k=3     =>      [2,3,4,1]
+[]		k=2     =>      []
+
+
+## Note
+
+If len(array) == k; result = array
+if k > len(array); Number of rotations = k % len(array)
+
+## Approach
+
+### Brute Force Method
+
+take k elements from the end and store them in temp arra
+shift remaining elements to the right by k
+loop through array and temp, range k storing elements of temp in respective indices in array
+
+### Optimal Solution
+
+[1,2,3,4,5,6] 	k=2 	=>	[5,6,1,2,3,4]
+1) reverse the array 	=>	[6,5,4,3,2,1]
+	Notice how split the array into 2 by k	[6,5, || 4,3,2,1], resembles results
+3) reverse the portions	=>	[5,6, || 1,2,3,4] 
+i.e.	reverse(0, k-1) and reverse(k, len(array)-1)
+
+
