@@ -1,0 +1,51 @@
+# Question
+
+You are given an integer array 'height' of length n. There are n vertical lines drawn such that two endpoints of the ith line are (i,0) and (i,height[i]).
+Find two lines that together with the X-axis form a container, such that the container contains the most water (depth is constant across containers).
+Return the area(that the 2 lines and the X-axis make) of the container which can store the maximum amount of water.
+Notice that you may not slant the container.
+
+
+## Clarifying Questions
+
+Does the Y-axis count as a wall? No
+Does the line inside a container affect the area? No
+What about the line thickness, is it negligeable?
+
+## Test Cases
+[1,5,6,3,4] => 5,4 => 4*3=12
+[10,6,5,6,5,7] => 10,7 => 7*5=35
+[] => 0
+[10] => 0
+
+
+## Approach
+
+### Brute force method
+
+checking all posibilities
+nested for loop => T=O(n**2)
+[3,7,5,6,8,4]
+
+have variable maxArea = 0
+have two pointers i, j point to index 0 and 1
+area = min(i,j) * (j-i)
+check if area > maxArea, update maxArea = area
+increment j upto n
+increment i upto n-1
+
+### 2 Shifting pointers method
+
+Area = height * width
+Have 2 pointers such that we initially start with maximum width
+    i.e. i points to index 0 and j to last index(n-1)
+At this point area = min(array[i],array[j]) * (j-i) where j = len(array)-1 & i=0
+
+Observations
+moving an pointers:
+1) the width will reduce
+2) the height may reduce or increase
+    a) moving pointer with min height, the height can increase
+    a) moving pointer with max height, the height cannot increase
+Therefore, moving the pointer with min height, there is a possibility for height to increase the maxArea
+Shift pointers as long as i < j
