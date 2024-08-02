@@ -1,0 +1,83 @@
+Day 26 Goals
+Welcome to Day 26 of the DSA Coding Challenge:
+
+Todays Goals (Strings):
+
+-Strings Data Structure Crash Course
+
+## Question 1: Non repeating character.
+
+You are given a string consisting of only lower case and upper-case English Alphabets and integers 0 to 9. Write a function that will take this string as Input and return the index of the first character that is non-repeating.
+
+### Clarifying Questions
+
+What is meant by 'first non-repeating character? First character occurs i time
+What if its not there? Return null
+if 'a' and 'A' occurs, should it be treated as repeating? No
+
+### Test Cases
+
+Aabc1Acbd   => 1
+aaAA33      => null
+aba =       => 0
+
+### Approach
+
+#### Brute Force
+
+two pointers at index 0 and 1 (i.e i=0,j=i+1)
+move pointer 2 through to n-1 comparing values to that of pointer 1
+if no repeat is found; return pointer 1
+else
+increament pointer 1 and two(i.e i=1, j = i + 2)
+
+#### Using a hash table
+
+create empty hashtable
+set pointer i and iterate string from 0 to n, while checking if string[i] is in hash table.
+if not, add it as key and set its counter/value to 1
+else increament counter/value
+iterate string again to find the first non-repeating character
+T O(n)
+S O(n)
+
+## Question 2: Palindrome.
+
+You are given a string. Write a function to check whether the string is a palindrome or not.
+
+### Clarifying Questions
+
+Is a single character string a Palindrome? Yes
+What should happen if the string is empty? Only non-empty strings will be passed
+What should be the output of the function? True/False
+Should uppercase and lowercase alphabets be treated as different? Yes, they are different
+
+### Test Cases
+
+"abcdab"    => True
+"aa"        => True
+"aA"        => False
+"a"         => True
+
+### Approach
+
+#### Create a new string by appending each char of the given string from the end
+
+create an empty string
+append characters from given string starting from the end
+compare given string and the new string, if equal return True
+return False otherwise
+
+#### Create a new array by appending each char of the given string from th    e end
+create an empty string
+append characters from given string starting from the end
+join characters in the array to form a string
+compare given string and the new string, if equal return True
+return False otherwise
+
+#### Use 2 ponters at begining and end of given string
+
+compare the characters at the 2 points
+if not equal return false
+else increament pointer at begining and decreament pointer at end
+compare these characters
