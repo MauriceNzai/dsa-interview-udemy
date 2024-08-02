@@ -1,0 +1,78 @@
+# Day 27 Goals
+
+Welcome to Day 27 of the DSA Coding Challenge:
+
+Todays Goals (Strings):
+
+## Question 1:Longest Unique char Substring
+
+Given a string s, find the length of the longest substring without repeating characters.
+
+### Clarifying Qusetions
+
+
+### Test Cases
+
+'ppppp'         =>  1
+'abcbd'         =>  3
+'pqbrstbuvwvxy' =>  7
+
+### Approaches
+
+#### Brute Force
+
+form all posible substrings
+identify substrings with unique characters
+identify the longest and return its length
+T => O(n**3)
+S => O(1)
+
+#### Store Character in Hash Table
+
+have variable max initialized to zero
+2 pointers start and i
+iterate using i, add new characters in hash table and update max appropriately
+                 else start = max(start, index of index existing char+1) & replace value for new index in hash
+
+T   =>  O(n)
+S   =>  O(min(n,m))
+
+## Question 2:Group Anagrams
+
+Given an array of strings consisting of lower case English letters, group the anagrams together. You can return the answer in any order. An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, using all the original letters exactly once.
+
+### Clarifying Questions
+
+
+### Test Cases
+
+['arc', 'car', 'cat', 'act', 'atc', 'abc' ] =>  [['arc', 'car'], ['cat', 'act', 'atc'], ['abc'] ]
+['acb'] => [['acb']]
+['']    => [['']]
+
+### Approaches
+
+#### Method 1
+
+If you sort anagrams, result is same for all anagrams
+create a new array with all elements in given array sorted
+['arc','abc','car','cat','act','acb','atc']
+['acr','abc','acr','act','act','abc','act'] 
+create an empty hash table
+iterate both arrays, sorted array provides keys and original array provides values
+each key holds an array of values
+if key not in hash table, add it and add corresponding value a index 0
+else, add value to the end of the key
+return the values of the hash table in an array
+
+Time Complexity
+if s is the number of strings and n the max number of charaters in a string
+sorting 1 element T = O(nlogn)
+sorting s elements T = O(s*nlogn)
+
+Space Complexity
+sorted array T= O(s*n)
+hash table T=O(s*n)
+output array T=O(s*n)
+
+S = O(sn)
