@@ -1,0 +1,62 @@
+# Day 28 Goals Searching Algorithms
+
+Welcome to Day 28 of the DSA Coding Challenge:
+
+## Question 1:Binary Search
+
+Given an array of integers which is sorted in ascending order, and a target integer, write a function to search for whether the target integer is there in the given array. If it is there then return its index. Otherwise, return -1. You must write an algorithm with O(log n) runtime complexity. 
+
+### Clarifying Questions
+
+
+### Test Cases
+
+### Approaches
+
+2 pointers, left and right pointing to index 0 and len(array)-1 respectivel
+get mid of array i.e. mid=floor((left+right)/2)
+check if value at mid == target, return mid
+else if array[mid] < target, shift right to mid-1
+else shift left to mid+1
+
+## Question 2:Search in Rotated Sorted Array
+
+You are given an integer array nums sorted in ascending order (with distinct values). Prior to being passed to your function, nums is possibly rotated at an unknown pivot index k (1 <= k < nums.length) such that the resulting array is [nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]] (0-indexed).  For example, [0,1,2,4,5,6,7] might be rotated at pivot index 3 and become [4,5,6,7,0,1,2]. Given an integer target, return the index of target if it is in the array, else return -1. You must write an algorithm with O(log n) runtime complexity.
+
+### Clarifying Questions
+
+
+### Test Cases
+
+[1234567]   k=1, target=7   o/p=>0
+            k=1, target=10 o/p=>-1
+[]               target=10  o/p=>-1
+[12345]          target=3   o/p=>2
+            k=2  target=3   o/p=>0
+
+### Approaches
+
+get all possible rotations of given array [123456]
+1,2,3,4,5,6
+6,1,2,3,4,5
+5,6,1,2,3,4
+4,5,6,1,2,3
+3,4,6,6,1,2,
+2,3,4,5,6,1
+
+Note: mid = floor(left+right)
+Notice that if array left<mid left part of array is sorted
+    else the right part is sorted
+
+Pseudocode
+left and right pointer and mid
+is array[mid] = target? return mid
+if array[left] <= array[mid]
+    if array[left] <= target < array[mid]
+        explore left part
+     explore right part
+else
+    if array[mid] < target <= array[right]
+        explore right part
+    explore left part
+
